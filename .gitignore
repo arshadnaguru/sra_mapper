@@ -1,3 +1,5 @@
-*.xls
-sra_files/
-__pycache__/
+echo *.xlsx > .gitignore
+echo *.xls >> .gitignore
+echo sra_files/ >> .gitignore
+echo __pycache__/ >> .gitignore
+echo *.pyc >> .gitignore

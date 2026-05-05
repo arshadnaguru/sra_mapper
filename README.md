@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # SRA Mapper — RIT OVPR
 
 Maps SRS numbers from SRA files to the full RAPID export and creates a new SRA Name column.
@@ -43,3 +44,7 @@ sra_mapper/
 - `rapid_with_sra_YYYYMMDD_HHMM.xlsx` — RAPID export with SRA Name column added
 - Sheet 1: Full data with SRA Name column right after SRS column
 - Sheet 2: SRA summary — proposal count per SRA
+=======
+# sra_mapper
+Automated SRA-to-proposal mapping tool for research administration - matches SRS numbers across multiple administrator portfolios against a full RAPID export, flags unassigned and orphan records, and outputs a Power BI-ready Excel with SRA assignments.
+>>>>>>> 260887aa3008d5ace9de523bf8522acf19c5c355
