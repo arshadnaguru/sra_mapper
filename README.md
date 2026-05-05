@@ -1,50 +1,58 @@
-<<<<<<< HEAD
-# SRA Mapper — RIT OVPR
+# SRA Mapper
 
-Maps SRS numbers from SRA files to the full RAPID export and creates a new SRA Name column.
+Automated proposal assignment tool for university research administration offices.
 
-## Folder setup
+Maps SRS numbers across multiple administrator portfolios against a full institutional 
+research export, flags unassigned and orphan records, and outputs a Power BI-ready 
+Excel with a clean SRA assignment column.
 
-```
+---
+
+## Folder Setup
 sra_mapper/
 ├── sra_mapper.py           ← main script
 ├── RUN_SRA_MAPPER.bat      ← double click to run
-├── rapid_export.xlsx       ← drop your full RAPID export here
-└── sra_files/
-    ├── Maria_Cortes.xlsx
-    ├── Stacey_Fisher.xlsx
-    ├── April_Burns.xlsx
-    ├── KwokKeung_Koo.xlsx
-    ├── Dawid_Grames.xlsx
-    ├── Vandezande_Sharon.xlsx
-    └── Brittany_Neyland.xlsx
+├── rapid_export.xlsx       ← drop your institutional export here
+└── sra_files/              ← drop all administrator Excel files here
+## Requirements
+
+- Python 3.9+
+- pandas
+- openpyxl
+
+Install dependencies:
+```bash
+pip install pandas openpyxl
 ```
 
-## How to use
+## How to Use
 
-1. Drop full RAPID export as `rapid_export.xlsx`
-2. Drop all SRA Excel files into `sra_files/` folder
+1. Drop your full institutional export as `rapid_export.xlsx`
+2. Drop all administrator Excel files into `sra_files/` folder
+   — filename of each Excel file is used as the administrator name
 3. Double click `RUN_SRA_MAPPER.bat`
-4. For any unassigned SRS — type the SRA name when prompted
-5. Load the output Excel into Power BI
+4. Review flagged records in the terminal
+5. Assign unassigned records when prompted
+6. Load the output Excel into Power BI
 
-## What it does
+## What It Does
 
-- Reads all SRA files from the folder automatically
-- Extracts SRA name from the filename
-- Matches SRS numbers between SRA files and RAPID export
-- Creates a new `SRA Name` column in the RAPID export
-- Pops up unassigned SRS with PI and Department details
-- Lets you assign unassigned SRS individually or all at once
-- Flags overlapping SRS (same proposal in 2+ SRA files)
-- Outputs one clean Excel ready for Power BI
+- Reads all administrator files from the folder automatically
+- Extracts administrator name directly from the filename
+- Matches proposal IDs between administrator files and the full export
+- Creates a new assignment column right next to the proposal ID column
+- Flags proposals in the full export with no administrator assigned
+- Flags proposals in administrator files missing from the full export
+- Detects proposals assigned to multiple administrators
+- Prompts user to assign unassigned proposals individually or in bulk
+- Outputs a timestamped Excel file ready for Power BI
 
 ## Output
 
-- `rapid_with_sra_YYYYMMDD_HHMM.xlsx` — RAPID export with SRA Name column added
-- Sheet 1: Full data with SRA Name column right after SRS column
-- Sheet 2: SRA summary — proposal count per SRA
-=======
-# sra_mapper
-Automated SRA-to-proposal mapping tool for research administration - matches SRS numbers across multiple administrator portfolios against a full RAPID export, flags unassigned and orphan records, and outputs a Power BI-ready Excel with SRA assignments.
->>>>>>> 260887aa3008d5ace9de523bf8522acf19c5c355
+| Sheet | Contents |
+|---|---|
+| RAPID with SRA | Full export with administrator assignment column added |
+| SRA Summary | Proposal count per administrator |
+| In SRA Not in RAPID | Orphan records requiring investigation |
+
+Output filename: `rapid_with_sra_YYYYMMDD_HHMM.xlsx`
